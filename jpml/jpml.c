@@ -496,6 +496,10 @@ void abc_play(void){
 
 }
 
+uint8_t abc_is_playing(){
+	return abc_playing;
+}
+
 /*stop playback of an abc file*/
 void abc_stop(void) {
 	abc_playing=0;

@@ -91,6 +91,7 @@ void channel_set_wave(uint8_t channel, uint8_t wave); /*change the wave of the g
 FRESULT abc_load_file(char* filename); /*load a given abc file and parse its header*/
 void abc_play(); /*play the currently loaded song*/
 void abc_stop(); /*stop playing a song*/
+uint8_t abc_is_playing();
 char* abc_song_title(); /*get the title of the currently loaded song*/
 
 /*

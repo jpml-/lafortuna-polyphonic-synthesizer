@@ -21,7 +21,7 @@ int main(void) {
 	display_color(LIME, 0xA254); /*because 0xA254 is the best colour*/
     clear_screen();
 	
-    /* draw the portal logo (under the assumption that this will be playing Still Alive) */
+    /* draw the portal logo (under the assumption that this will usually be playing Still Alive) */
 	display_string("             ,I??I??IIIII=              \n");
 	display_string("          ?II, ???I?III???? :           \n");
 	display_string("        ?I?I???= :I??I??II?+ I?+        \n");
