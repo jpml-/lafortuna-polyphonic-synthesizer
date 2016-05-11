@@ -10,6 +10,7 @@ The LaFortuna is an embedded device custom-built by the University of Southampto
 
 ### Usage  
 To play an ABC file:  
+
 * Load the file from the SD card with abc_load_file(filename)  
 * Play the file with abc_play() 
   * (NOTE: this loops until the song is finished as abc-file parsing is too complex for an ISR, so make sure this task is either managed by a scheduler or is the only non-ISR routine if you intend to use it as background music)  
@@ -17,6 +18,7 @@ To play an ABC file:
 * Check whether the song is playing or not with abc_is_playing()  
 
 If you really hate ABC notation you can manipulate the synthesizer yourself:  
+
 * Initialise the speakers and timers with pwm_init()  
 * Verify that the above are initialised with pwm_is_in_use()  
 * Use channel_play(note, duration) to play a note on the first channel not currently in use; or replace the note on channel 3 if they're all in use  
@@ -25,6 +27,7 @@ If you really hate ABC notation you can manipulate the synthesizer yourself:
 * When you're finished, call pwm_stop()  
 
 If you want to do weird things to a song while it's playing, the following methods are also exposed:  
+
 * changeKey(keystring) changes the key signature  
 * set_tempo(bpm) changes the tempo of the song (in crotchets per minute)  
 
@@ -41,6 +44,7 @@ Headers are composed of multiple lines. The general format of a line is:
 where x is a single letter and y is the rest of the line. Types of header lines accepted by this library:
 
 The following lines *must* appear before the song body, else they will either be ignored or cause playback errors:
+
 * "T:x" - Set the title of the song to be x  
 * "L:n/d" - Set the default length of a note to be n/d (e.g. a crotchet is 1/4. if this is not specified, a crotchet is used)  
 * "Q:n/d=t" - Set the song speed such that notes of length n/d are played t times per minute. E.g. "Q:1/2=120" means 120BPM. You can omit 'n/d=' - if you do so, a note length of 1/4 will be assumed.  
@@ -69,6 +73,7 @@ Lines must not exceed 1024 characters in length.
 Capital letters represent notes in the fourth octave - e.g. 'C' represents middle C (C4). Lowercase letters represent notes in the fifth octave.  
 
 Any note can be modified in the following ways (let n be a note):  
+
 * "nm/d" sets the length (duration) of note n to be (m/d) times the default length. m, / and d are all optional. *Note: the shortest length understood by this implementation is 1/32nd of a bar.* Examples:  
   * n2 causes note n to be played for double the default note length  
   * n/2 causes note n to be played for half the default note length  
@@ -102,6 +107,7 @@ All other characters in the notes body are ignored.
 
 ## Credit and Dependencies
 Credit and thanks to the following for code included in this archive:  
+
 - arp1g13; I used code from his LaFortuna WAV audio library as inspiration and as a starting point to see how to get audio out of the LaFortuna: github.com/fatcookies/lafortuna-wav-lib  
   - This library was itself adapted from: http://avrpcm.blogspot.co.uk/2010/11/playing-8-bit-pcm-using-any-avr.html  
 - ChaN for his Fat-FS implementation: elm-chan.org/fsw/ff/00index_e.html  
