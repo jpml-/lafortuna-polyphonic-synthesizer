@@ -13,7 +13,7 @@ To play an ABC file:
 
 * Load the file from the SD card with abc_load_file(filename)  
 * Play the file with abc_play() 
-  * (NOTE: this loops until the song is finished as abc-file parsing is too complex for an ISR, so make sure this task is either managed by a scheduler or is the only non-ISR routine if you intend to use it as background music)  
+  * (NOTE: this loops until the song is finished as abc-file parsing is too complex for an ISR, so make sure this task is either managed by a scheduler or is the only non-ISR routine if you intend to use it as background music. Waveform generation, however, is not blocking and is done using ISR1)  
 * Stop playback with abc_stop(), or wait for the song to end and it will stop on its own  
 * Check whether the song is playing or not with abc_is_playing()  
 
@@ -64,6 +64,7 @@ Any line not corresponding to this format is taken to be the start of the body a
 
 #### Body
 Lines in the body can either be one of the selected header lines as noted in the above section, or they can be a sequence of notes which will be played in order from left-to-right. E.g. here is a valid C-major scale in abc notation:  
+
 * C D E F G a b c  
 
 (In standard ABC notation, groups of notes are separated by bars via the pipe character '|', and notes within bars are separated by spaces. However, this implementation doesn't care and will accept any arbitrary presence or absence of spaces and bars as they have no effect on playback.)  
