@@ -17,7 +17,7 @@ To play an ABC file:
 * Stop playback with abc_stop(), or wait for the song to end and it will stop on its own  
 * Check whether the song is playing or not with abc_is_playing()  
 
-If you really hate ABC notation you can manipulate the synthesizer yourself:  
+If you really hate ABC notation or want to generate notes without calling a blocking method, you can manipulate the synthesizer yourself:  
 
 * Initialise the speakers and timers with pwm_init()  
 * Verify that the above are initialised with pwm_is_in_use()  
