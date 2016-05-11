@@ -10,7 +10,7 @@ The LaFortuna is an embedded device custom-built by the University of Southampto
 
 ### Usage
 To play an ABC file:
-* Load the file with abc_load_file(filename)
+* Load the file from the SD card with abc_load_file(filename)
 * Play the file with abc_play() 
   * (NOTE: this loops until the song is finished as abc-file parsing is too complex for an ISR, so make sure this task is either managed by a scheduler or is the only non-ISR routine if you intend to use it as background music)
 * Stop playback with abc_stop(), or wait for the song to end and it will stop on its own
