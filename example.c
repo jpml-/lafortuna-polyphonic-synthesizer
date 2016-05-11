@@ -60,6 +60,8 @@ int main(void) {
 		display_string(abc_song_title());
 		abc_play();
 		display_string("Song finished!");
+	}else{
+		display_string("music.abc not found!\nHave you inserted the SD card?");
 	}
 	for(;;);
 }
