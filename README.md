@@ -8,15 +8,15 @@ The LaFortuna is an embedded device custom-built by the University of Southampto
 * Can play most abc notation files downloaded from the internet out-of-the-box  
   * See this project's page on the notes wiki for some mp3s of music played by the LaFortuna and the accompanying files to play them.  
 
-### Usage
-To play an ABC file:
+### Usage  
+To play an ABC file:  
 * Load the file from the SD card with abc_load_file(filename)  
 * Play the file with abc_play() 
   * (NOTE: this loops until the song is finished as abc-file parsing is too complex for an ISR, so make sure this task is either managed by a scheduler or is the only non-ISR routine if you intend to use it as background music)  
 * Stop playback with abc_stop(), or wait for the song to end and it will stop on its own  
 * Check whether the song is playing or not with abc_is_playing()  
 
-If you really hate ABC notation you can manipulate the synthesizer yourself: 
+If you really hate ABC notation you can manipulate the synthesizer yourself:  
 * Initialise the speakers and timers with pwm_init()  
 * Verify that the above are initialised with pwm_is_in_use()  
 * Use channel_play(note, duration) to play a note on the first channel not currently in use; or replace the note on channel 3 if they're all in use  
@@ -24,12 +24,12 @@ If you really hate ABC notation you can manipulate the synthesizer yourself:
 * Use channel_set_wave(channel, wave) to change the waveform of tones played by the given channel  
 * When you're finished, call pwm_stop()  
 
-If you want to do weird things to a song while it's playing, the following methods are also exposed:
+If you want to do weird things to a song while it's playing, the following methods are also exposed:  
 * changeKey(keystring) changes the key signature  
 * set_tempo(bpm) changes the tempo of the song (in crotchets per minute)  
 
 ### La Fortuna ABC Notation
-Music files understood by this library are a subset of standard ABC notation, plus one extra operation. ABC files consist of a header with metainformation and details on how to play the song, followed by the body of the song which consists mostly of notes. Here is an exhaustive list of all elements of ABC notation understood by this implementation:
+Music files understood by this library are a subset of standard ABC notation, plus one extra operation. ABC files consist of a header with metainformation and details on how to play the song, followed by the body of the song which consists mostly of notes. Here is an exhaustive list of all elements of ABC notation understood by this implementation:  
 
 * Comments begin with '%' and can appear anywhere in the file.  
 
