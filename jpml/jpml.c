@@ -264,7 +264,7 @@ FRESULT abc_load_file(char* filename){
 	FRESULT result = f_open(&file, filename, FA_READ);
 	/*if the file exists and can be read, read the entire header*/
 	if(result == FR_OK){
-		if(realinebuffer) free(readlinebuffer);
+		if(readlinebuffer) free(readlinebuffer);
 		readlinebuffer=malloc(sizeof(char)*LINE_BUFFER_SIZE);
 		/*read lines of the file*/
 		while(readlinebuffer=f_gets(readlinebuffer, LINE_BUFFER_SIZE, &file)){
