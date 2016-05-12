@@ -264,6 +264,7 @@ FRESULT abc_load_file(char* filename){
 	FRESULT result = f_open(&file, filename, FA_READ);
 	/*if the file exists and can be read, read the entire header*/
 	if(result == FR_OK){
+		if(realinebuffer) free(readlinebuffer);
 		readlinebuffer=malloc(sizeof(char)*LINE_BUFFER_SIZE);
 		/*read lines of the file*/
 		while(readlinebuffer=f_gets(readlinebuffer, LINE_BUFFER_SIZE, &file)){
@@ -271,6 +272,7 @@ FRESULT abc_load_file(char* filename){
 			if(readlinebuffer[1]==':' || readlinebuffer[0]=='%' || readlinebuffer[1]=='%'){
 				switch(readlinebuffer[0]){
 					case('T'):	/*title*/
+						if(title) free(title);
 						title = malloc(sizeof(char)*strlen(readlinebuffer+2));
 						strcpy(title, readlinebuffer+2);
 						break;
